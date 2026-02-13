@@ -515,6 +515,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\IconHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\InputClickHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ResourceHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ResourceMapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ScreenHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\SecurityHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\SingleOpenHelper.cs" />

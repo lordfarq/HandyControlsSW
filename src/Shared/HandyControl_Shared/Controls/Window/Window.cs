@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
@@ -58,6 +58,20 @@ namespace HandyControl.Controls
             _commonPadding = Padding;
 
             Loaded += (s, e) => OnLoaded(e);
+            
+            Unloaded += (s, e) =>
+            {
+                //this.GetHwndSource()?.RemoveHook(HwndSourceHook);
+                if (Application.Current == null)
+                {
+                    this.RemoveFromWindowCollection();
+                }
+            };
+
+            if (Application.Current == null)
+            {
+                this.AddToWindowCollection();
+            }
         }
 
         #endregion 

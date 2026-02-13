@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -122,9 +122,9 @@ public class LocalizationExtension : MarkupExtension
         // if provider is null again, mybe we are in usercontrol so we can use mainwindow provider
         if (ctlProvider == null)
         {
-            if (Application.Current.MainWindow != null)
+            if (WindowHelper.MainWindow() != null)
             {
-                object localValue = Application.Current.MainWindow.ReadLocalValue(LocalizationManager.ProviderProperty);
+                object localValue = WindowHelper.MainWindow().ReadLocalValue(LocalizationManager.ProviderProperty);
                 if (localValue != DependencyProperty.UnsetValue)
                 {
                     if (localValue is ILocalizationProvider provider)

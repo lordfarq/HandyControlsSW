@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Input;
 using HandyControl.Tools;
@@ -11,10 +11,10 @@ public class PushMainWindow2TopCommand : ICommand
 
     public void Execute(object parameter)
     {
-        if (Application.Current.MainWindow != null && Application.Current.MainWindow.Visibility != Visibility.Visible)
+        if (WindowHelper.MainWindow() != null && WindowHelper.MainWindow().Visibility != Visibility.Visible)
         {
-            Application.Current.MainWindow.Show();
-            WindowHelper.SetWindowToForeground(Application.Current.MainWindow);
+            WindowHelper.MainWindow().Show();
+            WindowHelper.SetWindowToForeground(WindowHelper.MainWindow());
         }
     }
 

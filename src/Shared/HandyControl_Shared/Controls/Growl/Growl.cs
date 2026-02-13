@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -343,10 +343,9 @@ public class Growl : Control
     
     private static void ShowGlobal(GrowlInfo growlInfo)
     {
-        Application.Current.Dispatcher?.Invoke(
-#if NET40
+        Action a =
+
             new Action(
-#endif
                 () =>
                 {
                     if (GrowlWindow == null)
@@ -356,7 +355,9 @@ public class Growl : Control
                         InitGrowlPanel(GrowlWindow.GrowlPanel);
                     }
 
-                    GrowlWindow.UpdatePosition(Growl.GetTransitionMode(Application.Current.MainWindow));
+                    DependencyObject dObj = WindowHelper.MainWindow();
+
+                    GrowlWindow.UpdatePosition(Growl.GetTransitionMode(dObj));
                     GrowlWindow.Show(true);
 
                     var showDateTime = growlInfo.ShowDateTime;
@@ -385,10 +386,10 @@ public class Growl : Control
 
                     ShowInternal(GrowlWindow.GrowlPanel, ctl);
                 }
-#if NET40
-            )
-#endif
-        );
+            );
+
+        DispatcherHelper.GetApplicationCurrentDispatcher()?.Invoke(a);
+
     }
 
     /// <summary>
@@ -397,7 +398,7 @@ public class Growl : Control
     /// <param name="growlInfo"></param>
     private static void Show(GrowlInfo growlInfo)
     {
-        (Application.Current.Dispatcher ?? growlInfo.Dispatcher)?.Invoke(
+        (DispatcherHelper.GetApplicationCurrentDispatcher() ?? growlInfo.Dispatcher)?.Invoke(
 #if NET40
             new Action(
 #endif

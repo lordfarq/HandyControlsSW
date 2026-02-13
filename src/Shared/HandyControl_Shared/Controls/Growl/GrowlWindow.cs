@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using HandyControl.Data;
@@ -16,7 +16,7 @@ public sealed class GrowlWindow : Window
         WindowStyle = WindowStyle.None;
         AllowsTransparency = true;
 
-        Growl.SetTransitionStoryboard(this, Growl.GetTransitionStoryboard(Application.Current.MainWindow));
+        Growl.SetTransitionStoryboard(this, Growl.GetTransitionStoryboard(WindowHelper.MainWindow()));
         GrowlPanel = new InverseStackPanel();
         Content = new ScrollViewer
         {

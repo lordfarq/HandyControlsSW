@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Globalization;
 #if !NET40
@@ -41,7 +41,7 @@ public class ConfigHelper : INotifyPropertyChanged
     public void SetLang(string lang)
     {
         LangProvider.Culture = new CultureInfo(lang);
-        Application.Current.Dispatcher.Thread.CurrentUICulture = new CultureInfo(lang);
+        DispatcherHelper.GetApplicationCurrentDispatcher().Thread.CurrentCulture = new CultureInfo(lang);
         Lang = XmlLanguage.GetLanguage(lang);
         LocalizationManager.Instance.OnCultureChanged(new CultureInfo(lang));
     }
@@ -58,8 +58,8 @@ public class ConfigHelper : INotifyPropertyChanged
     public void SetWindowDefaultStyle(object resourceKey = null)
     {
         var metadata = resourceKey == null
-            ? new FrameworkPropertyMetadata(Application.Current.FindResource(typeof(Window)))
-            : new FrameworkPropertyMetadata(Application.Current.FindResource(resourceKey));
+            ? new FrameworkPropertyMetadata(ResourceHelper.GetResource(typeof(Window)))
+            : new FrameworkPropertyMetadata(ResourceHelper.GetResource(resourceKey));
 
         FrameworkElement.StyleProperty.OverrideMetadata(typeof(Window), metadata);
     }
@@ -67,8 +67,8 @@ public class ConfigHelper : INotifyPropertyChanged
     public void SetNavigationWindowDefaultStyle(object resourceKey = null)
     {
         var metadata = resourceKey == null
-            ? new FrameworkPropertyMetadata(Application.Current.FindResource(typeof(NavigationWindow)))
-            : new FrameworkPropertyMetadata(Application.Current.FindResource(resourceKey));
+            ? new FrameworkPropertyMetadata(ResourceHelper.GetResource(typeof(NavigationWindow)))
+            : new FrameworkPropertyMetadata(ResourceHelper.GetResource(resourceKey));
 
         FrameworkElement.StyleProperty.OverrideMetadata(typeof(NavigationWindow), metadata);
     }

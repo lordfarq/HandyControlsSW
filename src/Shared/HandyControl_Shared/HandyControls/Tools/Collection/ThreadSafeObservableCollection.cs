@@ -1,4 +1,4 @@
-﻿// https://github.com/meziantou/Meziantou.Framework
+// https://github.com/meziantou/Meziantou.Framework
 
 #if NETCOREAPP
 using System;
@@ -34,7 +34,7 @@ public sealed class ThreadSafeObservableCollection<T> : IList<T>, IReadOnlyList<
 
     private static Dispatcher GetCurrentDispatcher()
     {
-        return Application.Current?.Dispatcher ?? Dispatcher.CurrentDispatcher;
+        return DispatcherHelper.GetApplicationCurrentDispatcher() ?? Dispatcher.CurrentDispatcher;
     }
 
     public IReadOnlyObservableCollection<T> AsObservable

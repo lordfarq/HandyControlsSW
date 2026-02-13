@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using HandyControl.Data;
 using HandyControl.Interactivity;
@@ -87,12 +88,28 @@ public class PopupWindow : System.Windows.Window
                 Opacity = 1;
             }
         };
+        Unloaded += (s, e) =>
+        {
+            if (Application.Current == null)
+            {
+                this.RemoveFromWindowCollection();
+            }
+        };
+
+        if (Application.Current == null)
+        {
+            this.AddToWindowCollection();
+            Owner = WindowHelper.MainWindow();
+        }
+
+
         try
         {
-            Owner = Application.Current.MainWindow;
+            Owner = WindowHelper.MainWindow();
         }
         catch
         {
+            
             // ignored
         }
     }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Media;
@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 using HandyControl.Data;
 using HandyControl.Interactivity;
 using HandyControl.Properties.Langs;
@@ -282,7 +283,7 @@ public sealed class MessageBox : Window
     public static MessageBoxResult Success(System.Windows.Window owner, string messageBoxText, string caption = null)
     {
         MessageBox messageBox = null;
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        Dispatcher.CurrentDispatcher.Invoke(new Action(() =>
         {
             messageBox = CreateMessageBox(
                 owner: owner,
@@ -311,7 +312,7 @@ public sealed class MessageBox : Window
     public static MessageBoxResult Info(System.Windows.Window owner, string messageBoxText, string caption = null)
     {
         MessageBox messageBox = null;
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        Dispatcher.CurrentDispatcher.Invoke(new Action(() =>
         {
             messageBox = CreateMessageBox(
                 owner: owner,
@@ -338,7 +339,7 @@ public sealed class MessageBox : Window
     public static MessageBoxResult Warning(System.Windows.Window owner, string messageBoxText, string caption = null)
     {
         MessageBox messageBox = null;
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        Dispatcher.CurrentDispatcher.Invoke(new Action(() =>
         {
             messageBox = CreateMessageBox(
                 owner: owner,
@@ -365,7 +366,7 @@ public sealed class MessageBox : Window
     public static MessageBoxResult Error(System.Windows.Window owner, string messageBoxText, string caption = null)
     {
         MessageBox messageBox = null;
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        Dispatcher.CurrentDispatcher.Invoke(new Action(() =>
         {
             messageBox = CreateMessageBox(
                 owner: owner,
@@ -392,7 +393,7 @@ public sealed class MessageBox : Window
     public static MessageBoxResult Fatal(System.Windows.Window owner, string messageBoxText, string caption = null)
     {
         MessageBox messageBox = null;
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        Dispatcher.CurrentDispatcher.Invoke(new Action(() =>
         {
             messageBox = CreateMessageBox(
                 owner: owner,
@@ -421,7 +422,7 @@ public sealed class MessageBox : Window
     public static MessageBoxResult Ask(System.Windows.Window owner, string messageBoxText, string caption = null)
     {
         MessageBox messageBox = null;
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        Dispatcher.CurrentDispatcher.Invoke(new Action(() =>
         {
             messageBox = CreateMessageBox(
                 owner: owner,
@@ -443,7 +444,7 @@ public sealed class MessageBox : Window
     public static MessageBoxResult Show(MessageBoxInfo info)
     {
         MessageBox messageBox = null;
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        Dispatcher.CurrentDispatcher.Invoke(new Action(() =>
         {
             messageBox = CreateMessageBox(
                 owner: info.Owner,
@@ -499,7 +500,7 @@ public sealed class MessageBox : Window
     )
     {
         MessageBox messageBox = null;
-        Application.Current.Dispatcher.Invoke(new Action(() =>
+        Dispatcher.CurrentDispatcher.Invoke(new Action(() =>
         {
             messageBox = CreateMessageBox(owner, messageBoxText, caption, button, icon, defaultResult);
             SetButtonStatus(messageBox, button, defaultResult);

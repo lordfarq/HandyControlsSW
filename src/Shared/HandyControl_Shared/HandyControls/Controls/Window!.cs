@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -121,7 +121,7 @@ public partial class Window
     {
         if (WindowState == WindowState.Maximized)
         {
-            IntPtr hWnd = new WindowInteropHelper(Application.Current.MainWindow).Handle;
+            IntPtr hWnd = new WindowInteropHelper(WindowHelper.MainWindow()).Handle;
 
             IntPtr hNext = hWnd;
             do

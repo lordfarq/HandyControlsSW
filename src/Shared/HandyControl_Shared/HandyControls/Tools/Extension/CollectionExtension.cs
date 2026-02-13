@@ -1,4 +1,4 @@
-﻿// https://github.com/SeppPenner/CollectionExtensions
+// https://github.com/SeppPenner/CollectionExtensions
 
 using System;
 using System.Collections.Generic;
@@ -154,6 +154,7 @@ public static class CollectionExtension
     public static void AddOnUI<T>(this ICollection<T> collection, T item)
     {
         Action<T> addMethod = collection.Add;
-        Application.Current.Dispatcher.Invoke(addMethod, item);
+        DispatcherHelper.RunOnMainThread(() => addMethod(item));
+        //Application.Current.Dispatcher.Invoke(addMethod, item);
     }
 }

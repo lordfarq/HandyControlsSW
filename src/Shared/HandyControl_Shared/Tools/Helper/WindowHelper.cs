@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Linq;
@@ -23,8 +23,51 @@ public static partial class WindowHelper
     public static Window GetActiveWindow()
     {
         var activeWindow = InteropMethods.GetActiveWindow();
+        if (Application.Current == null)
+        {
+            return PluginWindows.OfType<Window>().FirstOrDefault(x => x.GetHandle() == activeWindow);
+        }
         return Application.Current.Windows.OfType<Window>().FirstOrDefault(x => x.GetHandle() == activeWindow);
     }
+    public static bool AddToWindowCollection(this Window window)
+    {
+        try
+        {
+            PluginWindows ??= new WindowCollection();
+
+            PluginWindows.GetType().GetMethod("Add", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).Invoke(PluginWindows, new object[] { window });
+
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+    public static bool RemoveFromWindowCollection(this Window window)
+    {
+        try
+        {
+            if (PluginWindows == null) return false;
+            PluginWindows.GetType().GetMethod("Remove", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).Invoke(PluginWindows, new object[] { window });
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+    public static Window MainWindow()
+    {
+        if (Application.Current != null)
+        {
+            return Application.Current.MainWindow;
+        }
+
+        return PluginWindows?[0];
+    }
+
+    public static WindowCollection PluginWindows;
 
     private static readonly BitArray _cacheValid = new((int) InteropValues.CacheSlot.NumSlots);
 

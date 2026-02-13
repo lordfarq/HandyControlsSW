@@ -1,4 +1,5 @@
-﻿using System.Windows;
+using System.Windows;
+using HandyControl.Tools;
 
 namespace HandyControl.Controls;
 
@@ -11,7 +12,7 @@ public partial class Carousel
     }
 
     public static readonly DependencyProperty PreviousButtonStyleProperty =
-        DependencyProperty.Register(nameof(PreviousButtonStyle), typeof(Style), typeof(Carousel), new PropertyMetadata(Application.Current.Resources["ButtonCustom"] as Style));
+        DependencyProperty.Register(nameof(PreviousButtonStyle), typeof(Style), typeof(Carousel), new PropertyMetadata(ResourceHelper.GetTheme()["ButtonCustom"] as Style));
 
     public Style NextButtonStyle
     {
@@ -20,5 +21,5 @@ public partial class Carousel
     }
 
     public static readonly DependencyProperty NextButtonStyleProperty =
-        DependencyProperty.Register(nameof(NextButtonStyle), typeof(Style), typeof(Carousel), new PropertyMetadata(Application.Current.Resources["ButtonCustom"] as Style));
+        DependencyProperty.Register(nameof(NextButtonStyle), typeof(Style), typeof(Carousel), new PropertyMetadata(ResourceHelper.GetTheme()["ButtonCustom"] as Style));
 }

@@ -1,6 +1,7 @@
-﻿// http://github.com/kinnara/ModernWpf
+// http://github.com/kinnara/ModernWpf
 
 using System.Windows;
+using System.Windows.Threading;
 using HandyControl.Tools;
 
 namespace HandyControl.Themes;
@@ -15,6 +16,7 @@ public class Theme : ResourceDictionary
     /// </summary>
     public Theme()
     {
+        DispatcherHelper.AppDispatcher = Dispatcher.CurrentDispatcher;
         MergedDictionaries.Add(ControlsResources);
     }
 

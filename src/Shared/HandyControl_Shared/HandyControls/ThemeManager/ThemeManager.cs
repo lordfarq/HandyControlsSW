@@ -1,4 +1,4 @@
-﻿// http://github.com/kinnara/ModernWpf
+// http://github.com/kinnara/ModernWpf
 
 using System;
 using System.Collections.Generic;
@@ -11,6 +11,7 @@ using HandyControl.Controls;
 using HandyControl.Data;
 using HandyControl.Tools;
 using HandyControl.Tools.Extension;
+using HandyControl.Tools.Helper;
 using Microsoft.Win32;
 using Window = HandyControl.Controls.Window;
 
@@ -345,6 +346,14 @@ namespace HandyControl.Themes
 
         private void applyAccentColor(object Value)
         {
+            if (Application.Current == null)
+            {
+                ResourceHelper.GetTheme()["PrimaryBrush"] = Value;
+                ResourceHelper.GetTheme()["DarkPrimaryBrush"] = Value;
+                ResourceHelper.GetTheme()["TitleBrush"] = Value;
+
+                return;
+            }
             Application.Current.Resources["PrimaryBrush"] = Value;
             Application.Current.Resources["DarkPrimaryBrush"] = Value;
             Application.Current.Resources["TitleBrush"] = Value;
@@ -739,6 +748,17 @@ namespace HandyControl.Themes
             if (Application.Current != null)
             {
                 var appResources = Application.Current.Resources;
+                appResources.MergedDictionaries.RemoveAll<IntellisenseResourcesBase>();
+
+                UpdateActualApplicationTheme();
+
+                _applicationInitialized = true;
+
+                ApplyApplicationTheme();
+            }
+            else
+            {
+                var appResources = ResourceHelper.GetTheme();
                 appResources.MergedDictionaries.RemoveAll<IntellisenseResourcesBase>();
 
                 UpdateActualApplicationTheme();
