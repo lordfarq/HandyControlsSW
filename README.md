@@ -28,6 +28,9 @@
 This project is based on [HandyControl](https://github.com/handyOrg/HandyControl) and includes some controls and features that are not included in the original project [for example support for Persian Calendar and PersianDate, More Controls and More Styles]
 [See what's there](https://ghost1372.github.io/handycontrol/persianToolkit/) 
 
+# Plugin Friendly Version
+This project has been forked to allow development for applications that include an API for developing plugins or add-ins. My use case is SOLIDWORKS, so this is being developed and tested against that application.
+
 ## Contributors
 
 <a href="https://github.com/ghost1372" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ghost1372" src="https://avatars.githubusercontent.com/u/9213496?s=64&v=4"></a>
