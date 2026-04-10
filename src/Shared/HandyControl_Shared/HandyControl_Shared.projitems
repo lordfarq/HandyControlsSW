@@ -103,6 +103,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Tag\TagContainer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Text\HighlightTextBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Text\SimpleText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\UserControl\UserControlEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\GrowlShowMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\LinearLayout.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\TipPlacement.cs" />
@@ -515,7 +516,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\IconHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\InputClickHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ResourceHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ResourceMapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ScreenHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\SecurityHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\SingleOpenHelper.cs" />

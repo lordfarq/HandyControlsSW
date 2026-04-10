@@ -7,6 +7,8 @@ using System.Windows.Media;
 using HandyControl.Data;
 using HandyControl.Tools;
 using HandyControl.Tools.Interop;
+using System.Diagnostics;
+
 #if NET40
 using Microsoft.Windows.Shell;
 #else
@@ -178,6 +180,10 @@ public partial class Window
         if (e.Property.Name is nameof(WindowState))
         {
             ApplyWindowChrome((WindowState) e.NewValue);
+        }
+        else if (e.Property.Name is nameof(Template))
+        {
+            Debug.Print(e.Property.Name);
         }
         base.OnPropertyChanged(e);
     }

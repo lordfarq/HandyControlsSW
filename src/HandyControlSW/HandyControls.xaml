@@ -1,0 +1,27 @@
+<hc:Window x:Class="HandyControlSW.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HandyControlSW"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        >
+    <Grid>
+        <hc:SideMenu>
+            <hc:SideMenuItem Header="Test">
+                <hc:SideMenuItem Header="Test Sub 1"/>
+                <hc:SideMenuItem Header="Test Sub 2"/>
+            </hc:SideMenuItem>
+            <hc:SideMenuItem Header="Test 2">
+                <hc:SideMenuItem Header="Test 2 Sub 1"/>
+                <hc:SideMenuItem Header="Test 2 Sub 2"/>
+            </hc:SideMenuItem>
+        </hc:SideMenu>
+        <!--<hc:SimpleStackPanel>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top"/>
+            <hc:SplitButton Content="HandyControl Button" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top"/>
+        </hc:SimpleStackPanel>-->
+    </Grid>
+</hc:Window>

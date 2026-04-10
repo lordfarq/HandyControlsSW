@@ -10,6 +10,8 @@ using HandyControl.Tools.Interop;
 using System.Windows.Controls;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
+using HandyControl.Themes;
+
 #if NET40
 using Microsoft.Windows.Shell;
 #else
@@ -54,6 +56,17 @@ namespace HandyControl.Controls
 
         public Window()
         {
+            if (Application.Current == null)
+            {
+                var themeDict = ResourceHelper.GetTheme();
+                if (!Resources.MergedDictionaries.Contains(themeDict))
+                {
+                    Resources.MergedDictionaries.Add(themeDict);
+                }
+                //Resources.MergedDictionaries.Add(ResourceHelper.GetTheme());
+                this.AddToWindowCollection();
+            }
+
             ApplyWindowChrome(WindowState);
             _commonPadding = Padding;
 
@@ -68,10 +81,7 @@ namespace HandyControl.Controls
                 }
             };
 
-            if (Application.Current == null)
-            {
-                this.AddToWindowCollection();
-            }
+            
         }
 
         #endregion 
